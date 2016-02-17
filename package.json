@@ -1,6 +1,6 @@
 {
   "name": "letsgoout",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Nightlife coordination app",
   "main": "app.js",
   "scripts": {
@@ -23,6 +23,7 @@
     "passport": "~0.3.2",
     "body-parser": "~1.15.0",
     "cookie-parser": "~1.4.1",
-    "express-session": "~1.13.0"
+    "express-session": "~1.13.0",
+    "passport-local": "~1.0.0"
   }
 }
