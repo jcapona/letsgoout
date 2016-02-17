@@ -1,0 +1,22 @@
+#header {
+	background: url("http://www.poolpartychile.cl/images/6908980-party-time.jpg") no-repeat center center;
+	background-size: cover;
+	min-height: 80vh;
+	position: relative;
+	overflow: hidden;
+	margin: 0;
+	padding: 0;
+}
+
+#header img {
+  
+}
+
+#nav {
+  background-color: black;
+  width: 100%;
+  min-height: 0;
+  max-height: auto;
+  margin: 0;
+  border-color: transparent;
+}
