@@ -3,7 +3,17 @@ var MONGO_PASS = "example";
 
 var express = require('express');
 var exphbs = require('express-handlebars');
+var bodyParser = require('body-parser');
+var cookieParser = require('cookie-parser')
+var session = require('express-session');
 var app = express();
+
+
+// create application/json parser 
+var jsonParser = bodyParser.json()
+ // create application/x-www-form-urlencoded parser 
+var urlencodedParser = bodyParser.urlencoded({ extended: false })
+
 
 // Configure express to use handlebars templates
 var hbs = exphbs.create({defaultLayout: 'main'});
@@ -46,9 +56,14 @@ passport.use(new LocalStrategy(
 
 // App configuration
 app.use(express.static(__dirname + '/public'));
-app.use(express.cookieParser());
-app.use(express.bodyParser());
-app.use(express.session({ secret: 'hola' }));
+app.use(cookieParser());
+app.set('trust proxy', 1) // trust first proxy
+app.use(session({
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: true }
+}))
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -71,8 +86,6 @@ app.use(function(req, res, next){
 
   next();
 });
-app.use(app.router);
-
 
 passport.serializeUser(function(user, done) {
   done(null, user);
@@ -126,7 +139,7 @@ app.post('/login', function(req, res) {
 });
 
 // Signs up user to system and logs him in inmediatly
-app.post('/signup', function(req, res, next) {
+app.post('/signup', urlencodedParser, function(req, res, next) {
     var password = req.body.password;
     var username = req.body.username;
     var email = req.body.email;
