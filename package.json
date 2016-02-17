@@ -1,0 +1,24 @@
+{
+  "name": "letsgoout",
+  "version": "0.0.0",
+  "description": "Nightlife coordination app",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jcapona/letsgoout.git"
+  },
+  "author": "Jorge Capona",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/jcapona/letsgoout/issues"
+  },
+  "dependencies": {
+    "express": "~4.13.4",
+    "mongoose": "~4.4.3",
+    "express-handlebars": "~3.0.0"
+  }
+}
